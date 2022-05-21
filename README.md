@@ -2,6 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Works Steps 
+* Created app
+* Edited app.js file
+* Installed react router
+* 
+* 
+* 
+
+## What I used to make this website
+* React 
+* React Router
+* 
+* 
+* 
+
 ## Available Scripts
 
 In the project directory, you can run:
