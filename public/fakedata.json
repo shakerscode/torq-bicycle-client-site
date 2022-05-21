@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Tires",
+        "image": "https://i.ibb.co/0c45FsY/tires.png",
+        "shortDesc": "Bontrager R3 Hard-Case Lite Road Tire. A lightly-treaded road tire with proprietary TR-Speed compound and improved Hard-Case Lite puncture protection for unmatched speed, confidence, and durability.",
+        "minOrder": 100,
+        "availableQuantity": 1000,
+        "price": 99
+    },
+    {
+        "name": "Tubes",
+        "image": "https://i.ibb.co/k0C0Yh7/tubes.png",
+        "shortDesc": "Bontrager Fat and + Schrader Valve Bicycle Tube. An inner tube for fat bikes, built with the Hodag and Jackalope in mind.",
+        "minOrder": 100,
+        "availableQuantity": 1000,
+        "price": 99
+    },
+    {
+        "name": "Wheels",
+        "image": "https://i.ibb.co/88PMyBH/wheels.jpg",
+        "shortDesc": "A sub-1300g cross country race wheel with a 29mm rim width that delivers all the performance of a wider rim without the weight.",
+        "minOrder": 100,
+        "availableQuantity": 1000,
+        "price": 1099
+    },
+    {
+        "name": "Handlebars",
+        "image": "https://i.ibb.co/Y0WFh7P/hendle-bar.png",
+        "shortDesc": "An integrated bar and stem combo that cleanly and securely holds cables for a refined look and added aerodynamics.",
+        "minOrder": 100,
+        "availableQuantity": 1000,
+        "price": 899
+    },
+    {
+        "name": "Bike Front Light",
+        "image": "https://i.ibb.co/sWkB5BM/light.png",
+        "shortDesc": "A USB-rechargeable front light with five modes for day and night and enough power to light up the full width of any trail.",
+        "minOrder": 100,
+        "availableQuantity": 1000,
+        "price": 499
+    },
+    {
+        "name": "Moble Hendler",
+        "image": "https://i.ibb.co/Y246vf1/moble-hendler.jpg",
+        "shortDesc": "A smartphone bike mount is a worthy investment for any commuter, cyclist or weekend warrior who prefers his or her phone at the ready.",
+        "minOrder": 100,
+        "availableQuantity": 1000,
+        "price": 299
+    }
+]

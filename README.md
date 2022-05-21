@@ -7,9 +7,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Edited app.js file
 * Installed react router
 * Using daisy ui and tailwind as css framework
-* 
-* 
-* 
+* Banner 
+* Home About
+* Home Products
 * 
 * 
 
