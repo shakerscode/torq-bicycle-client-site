@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Created app
 * Edited app.js file
 * Installed react router
+* Using daisy ui and tailwind as css framework
+* 
+* 
 * 
 * 
 * 
@@ -13,6 +16,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## What I used to make this website
 * React 
 * React Router
+* Installed tailwind
+* Installed daisy ui
+* 
+* 
 * 
 * 
 * 
