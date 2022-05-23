@@ -6,7 +6,7 @@ import CycleParts from './CycleParts';
 
 const HomeProducts = () => { 
     const { isLoading, data: parts } = useQuery('product', () =>
-    fetch('https://obscure-basin-46089.herokuapp.com/product').then(res =>
+    fetch('http://localhost:5000/product').then(res =>
       res.json()
     )
   )
@@ -15,7 +15,7 @@ const HomeProducts = () => {
   }
 
     return (
-        <div className=''>
+        <div className='mt-10'>
             <h1 className='text-center text-black text-4xl font-bold'>Our Products</h1>
             <div class="card">
                 <div class="card-body mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">

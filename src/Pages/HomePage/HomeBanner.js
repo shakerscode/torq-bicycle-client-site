@@ -4,9 +4,9 @@ import bannerImg from '../../images/banner-img.png'
 
 const HomeBanner = () => {
     return (
-        <div className="hero md:min-h-screen  lg:min-h-screen min-h-screen">
+        <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src={bannerImg} className="min-w-md md:max-w-md lg:max-w-md rounded-lg shadow-2xl" alt='banner'/>
+                <img src={bannerImg} className="max-w-xs md:max-w-md lg:max-w-md rounded-lg shadow-2xl" alt='banner'/>
                 <div className='pr-10'>
                     <h1 className="md:text-4xl lg:text-4xl text-2xl uppercase text-secondary font-bold">Get Qualityful Part's <br /> For Bicycle</h1>
                     <p className="py-6 text-justify text-md">

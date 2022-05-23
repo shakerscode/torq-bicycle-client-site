@@ -4,7 +4,7 @@ import cycle from '../../images/cycle.png'
 
 const HomeAbout = () => {
     return ( 
-        <div class="hero min-h-screen">
+        <div class="hero max-h-screen">
             <div class="hero-content flex-col lg:flex-row-reverse">
                 <div className='md:ml-5'>
                     <h1 class="md:text-4xl lg:text-4xl text-2xl font-bold text-secondary uppercase">Largest Bicycle <br /> Manufacturer & Exporter</h1>

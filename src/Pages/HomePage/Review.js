@@ -7,11 +7,11 @@ const Review = ({ review }) => {
     const { name, image, userReview, position, rating } = review;
     return (
         <div class="card bg-base-100 shadow-xl">
-            <div class="avatar flex justify-between items-center p-10">
+            <div class="avatar flex justify-between items-center p-6">
                 <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={image} alt='reviewer'/>
                 </div>
-                <div className='pt-5'>
+                <div className='pt-6'>
                     <h1 className='text-xl font-bold text-primary'>{name}</h1>
                     <small>{position}</small>
                 </div>

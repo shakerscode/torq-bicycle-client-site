@@ -4,7 +4,7 @@ import PrimaryBtn from '../SharedPages/PrimaryBtn';
 
 const CycleParts = ({ part }) => {
     const navigate = useNavigate()
-    const {name, image, shortDesc, minOrder, availableQuantity, price} = part;
+    const {_id, name, image, shortDesc, minOrder, availableQuantity, price} = part;
     return (
         <div class="card max-w-sm shadow-xl">
             <figure class="px-10 pt-10">
@@ -16,7 +16,7 @@ const CycleParts = ({ part }) => {
                 <p className='text-md'>Min. Order: {minOrder} piece</p>
                 <p>Available: {availableQuantity}</p>
                 <p>Per Pice: {price}$</p>
-                <div onClick={()=> navigate('/')} class="card-actions">
+                <div onClick={()=> navigate(`/purchase/${_id}`)} class="card-actions">
                     <PrimaryBtn>Buy Now</PrimaryBtn>
                 </div>
             </div>

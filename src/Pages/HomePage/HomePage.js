@@ -1,5 +1,6 @@
 import React from 'react';
 import BusinessSummery from './BusinessSummery';
+import Contacts from './Contacts';
 import HomeAbout from './HomeAbout';
 import HomeBanner from './HomeBanner';
 import HomeProducts from './HomeProducts';
@@ -11,8 +12,9 @@ const HomePage = () => {
             <HomeBanner></HomeBanner>
             <HomeAbout></HomeAbout>
             <HomeProducts></HomeProducts>
-            <ProductReview></ProductReview>
             <BusinessSummery></BusinessSummery>
+            <ProductReview></ProductReview>
+            <Contacts></Contacts>
         </div>
     );
 };
