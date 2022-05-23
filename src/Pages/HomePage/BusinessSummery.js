@@ -8,7 +8,8 @@ import Summery from './Summery';
 const BusinessSummery = () => {
     return (
         <div>
-            <h1 className='uppercase text-center md:text-4xl text-2xl text-secondary font-bold md:p-10'>Companies Loves Us </h1>
+            <h1 className='uppercase text-center md:text-4xl text-2xl text-secondary font-bold mt-5'>Companies Loves Us </h1>
+            <p className='text-center text-md text-info uppercase'>We gathered lots of love from our buyers</p>
             <div className='grid grid-cols-2 md:grid-cols-4 gap-6 md:w-4/6 mx-auto p-10'>
             <Summery image={customer} number={'100+'} tittle={'Customers'}></Summery>
             <Summery image={revenue} number={'120M+'} tittle={'Annual Revenue'}></Summery>

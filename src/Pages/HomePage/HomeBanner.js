@@ -4,7 +4,7 @@ import bannerImg from '../../images/banner-img.png'
 
 const HomeBanner = () => {
     return (
-        <div className="hero md:min-h-screen  lg:min-h-screen max-h-screen">
+        <div className="hero md:min-h-screen  lg:min-h-screen min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img src={bannerImg} className="min-w-md md:max-w-md lg:max-w-md rounded-lg shadow-2xl" alt='banner'/>
                 <div className='pr-10'>
