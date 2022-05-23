@@ -11,7 +11,7 @@ const HomeAbout = () => {
                     <p class="py-6 text-justify">Tork Bicycle's primary business is bicycle parts manufacturing. It is Bangladesh’s largest bicycle and parts exporter. The company has been involved in the bicycle industry for the past 38 years. It exports bicycles to the UK, Ireland, Belgium, Germany, Denmark, Sweden, Netherlands, Italy, Finland, Spain and India. It also supplies to local market.</p>
                     <PrimaryBtn>Learn More</PrimaryBtn>
                 </div>
-                <img src={cycle} class="rounded-lg shadow-2xl ml-10" alt='cycle' />
+                <img src={cycle} class=" rounded-lg shadow-2xl md:ml-10 lg:ml-10" alt='cycle' />
 
             </div>
         </div>

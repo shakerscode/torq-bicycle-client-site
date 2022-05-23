@@ -12,13 +12,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Home Products
 * 
 * 
+* 
+* 
 
 ## What I used to make this website
 * React 
 * React Router
-* Installed tailwind
-* Installed daisy ui
-* 
+* Tailwind
+* Daisy ui
+* React Query
 * 
 * 
 * 
