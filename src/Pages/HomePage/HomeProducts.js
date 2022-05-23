@@ -6,7 +6,7 @@ import CycleParts from './CycleParts';
 
 const HomeProducts = () => { 
     const { isLoading, data: parts } = useQuery('product', () =>
-    fetch('http://localhost:5000/product').then(res =>
+    fetch('https://safe-waters-55642.herokuapp.com/product').then(res =>
       res.json()
     )
   )
