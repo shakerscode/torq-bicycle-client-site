@@ -21,8 +21,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Tailwind
 * Daisy ui
 * React Query
-* 
-* 
+* React Toastify
+* React Hook Forum
+* Firebase
+* Firebase github hooks
 * 
 * 
 

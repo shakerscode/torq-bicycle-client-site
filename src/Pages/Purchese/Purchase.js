@@ -17,11 +17,13 @@ const Purchase = () => {
     if (isLoading) {
         return <LoadingSpinner></LoadingSpinner>
     }
+    
     const { _id, name, image, shortDesc, price, minOrder, availableQuantity } = singleProduct;
 
     const getQuantity= (e) =>{
         const orderQuantity = e.target.value;
         setQuantity(orderQuantity);
+        console.log(orderQuantity);
  
     }
 
@@ -32,8 +34,8 @@ const Purchase = () => {
         else if(quantity < minOrder){
             return setErrors('Minimum 100 piece is our criteria')
         }
-        console.log(quantity);
-        setErrors('')
+            console.log(quantity);
+            setErrors('')
     }
 
 
@@ -72,12 +74,12 @@ const Purchase = () => {
                     <label class="label">
                         <span class="label-text">Enter Your Order Quantity:</span> 
                     </label>
-                    <input type="number" onBlur={getQuantity} placeholder="Enter Your Quantity" defaultValue={minOrder} class="input input-bordered input-info w-full mb-2" />
+                    <input type="number" onBlur={getQuantity} placeholder="Enter Your Quantity" defaultValue={minOrder}  class="input input-bordered input-info w-full mb-2" />
                     {
                             errors && <p className='text-error text-center'>{errors}</p>
                         }
-                    <div onClick={handlePlaceOrder} class="card-actions justify-center">
-                        <PrimaryBtn>Place Order</PrimaryBtn>
+                    <div   class="card-actions justify-center">
+                        <button onClick={handlePlaceOrder} disabled={errors && errors} className="btn btn-primary text-white btn-sm md:btn-md  bg-gradient-to-r from-sky-500 to-blue-700">Place Order</button>
                     </div>
                 </div>
             </div>
