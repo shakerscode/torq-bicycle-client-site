@@ -150,6 +150,15 @@ const Purchase = () => {
                                 {...register("partsName")}
                             />
                             <label className="label">
+                                <span className="label-text text-secondary">Price Per Piece</span>
+                            </label>
+                            <input
+                                className='input input-bordered input-primary w-full'
+                                type="text"
+                                value={price}
+                                {...register("price")}
+                            />
+                            <label className="label">
                                 <span className="label-text text-secondary">Quantity</span>
                             </label>
                             <input
