@@ -12,7 +12,7 @@ const MyProfile = () => {
     const userEmail = user?.email;
 
     const { isLoading, data: userData, refetch } = useQuery('users', () =>
-        fetch(`http://localhost:5000/user/${userEmail}`, {
+        fetch(`https://safe-waters-55642.herokuapp.com/user/${userEmail}`, {
             method: 'GET'
         }).then(res =>
             res.json()
@@ -21,6 +21,7 @@ const MyProfile = () => {
     if (isLoading) {
         return <LoadingSpinner></LoadingSpinner>
     }
+    refetch()
 
     const onSubmit = data => {
         fetch(`https://safe-waters-55642.herokuapp.com/user/${userEmail}`, {
@@ -36,7 +37,6 @@ const MyProfile = () => {
                 toast.success('Successfully updated profile information')
             }
         })
-        refetch()
         reset()
     }
 
