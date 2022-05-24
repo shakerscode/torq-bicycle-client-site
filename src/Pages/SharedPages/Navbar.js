@@ -13,6 +13,8 @@ const Navbar = () => {
         <li><Link to='/about-us'>About</Link></li>
         <li><Link to='/contact-us'>Contact</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
+        <li><Link to='/reviews'>Reviews</Link></li>
+        {user && <li><Link to='/my-profile'>Profile</Link></li>}
     </>
 
 const logOutUser = () => {
@@ -44,8 +46,13 @@ const logOutUser = () => {
                 {
                     user 
                     ? 
-                    <button class="btn btn-xs btn-secondary text-white md:mr-10 lg:mr-10 mr-3"><Link to='/dashboard'>Dashboard</Link></button>
-                    :
+                    <>
+                    <label for="my-drawer-2" class="btn btn-sm btn-primary text-white mr-2 drawer-button lg:hidden">Dashboard</label>
+
+                     <button for="my-drawer-2" class="btn btn-sm btn-secondary text-white hidden lg:block md:mr-10 lg:mr-10 mr-3"><Link to='/dashboard'>Dashboard</Link></button>
+
+                    </>                   
+                     :
                     <button class="btn btn-xs sm:btn-sm md:btn-md  btn-secondary text-white mr-10 "><Link to='/login'>Login</Link></button>
                 }
 
@@ -60,9 +67,9 @@ const logOutUser = () => {
                     </label>
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-primary">
                         <li>
-                            <Link to='/profile' className="justify-between">
+                            <Link to='/my-profile' className="justify-between">
                                 Profile
-                                <span className="badge">New</span>
+                                
                             </Link>
                         </li>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>                               

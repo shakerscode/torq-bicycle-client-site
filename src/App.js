@@ -14,6 +14,10 @@ import Blog from './Pages/Blog/Blog';
 import RequireAuth from './Pages/Authentication/RequireAuth';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import NotFound from './Pages/NotFound/NotFound';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import AddReviews from './Pages/Dashboard/AddReviews';
+import Reviews from './Pages/Reviews/Reviews';
+import MyProfile from './Pages/Dashboard/MyProfile';
 
 
 function App() {
@@ -33,11 +37,17 @@ function App() {
         <Route path='/about-us' element={<About></About>}></Route>
         <Route path='/contact-us' element={<Contact></Contact>}></Route>
         <Route path='/Blog' element={<Blog></Blog>}></Route>
+        <Route path='/reviews' element={<Reviews></Reviews>}></Route>
+        <Route path='/my-profile' element={<MyProfile></MyProfile>}></Route>
         <Route path='/dashboard' element={
           <RequireAuth>
             <Dashboard></Dashboard>
           </RequireAuth>
-        }></Route>
+        }>
+          <Route index element={<MyOrders></MyOrders>}/>
+          <Route path='/dashboard/add-reviews' element={<AddReviews></AddReviews>}/>
+
+        </Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

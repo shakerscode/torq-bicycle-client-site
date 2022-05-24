@@ -27,9 +27,7 @@ const Purchase = () => {
     
     const { _id, name, image, shortDesc, price, minOrder, availableQuantity } = singleProduct;
 
-    // const getOrderValue = e =>{
-    //     console.log(e.target.value);
-    // }
+    
    
     const onSubmit = data => {
         if(data.quantity > availableQuantity){
@@ -42,7 +40,7 @@ const Purchase = () => {
             setErrors('')
             setBtnDisable(false)
 
-            fetch('http://localhost:5000/orders',{
+            fetch('https://safe-waters-55642.herokuapp.com/orders',{
                 method: 'POST',
                 headers:{
                     'content-type': 'application/json'
