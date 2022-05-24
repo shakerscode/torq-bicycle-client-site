@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
@@ -11,7 +11,6 @@ import { toast } from 'react-toastify';
 const SignUp = () => {
     const navigate = useNavigate();
     const [confirmPassError, setConfirmPassError] = useState('')
-    const [selectSub, setSelectSub] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         createUserWithEmailAndPassword,
@@ -21,11 +20,13 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
     const [token] = useUserToken(user);
- 
-    
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
      useEffect( ()=>{
         if (token) {
             navigate('/')
+            navigate(from, { replace: true });
             toast.success('Successfully sign up')
     
         }
@@ -46,18 +47,14 @@ const SignUp = () => {
         if (data.password !== data.confPassword) {
             return setConfirmPassError('Password mismatched')
         }
-        else if (data.selectSubject === 'Who are you?') {
-            return setSelectSub("Please choose your occupation")
-        }
         else {
             setConfirmPassError('')
-            setSelectSub('')
         }
         await createUserWithEmailAndPassword(data.email, data.password)
-        await updateProfile({ displayName: data.name });
+        await updateProfile({ displayName: data.name, photoURL :data.photo });
     };
 
-
+   
     return (
         <div>
             <div className=''>
@@ -105,8 +102,9 @@ const SignUp = () => {
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-error">{errors.email.message}</span>}
                             </label>
                             <label className="label">
-                                <span className="label-text text-secondary">Your photo url <small className='text-gray-200'>Exm. https://api.lorem.space/image/face?hash=33791</small></span>
+                                <span className="label-text text-secondary">Your photo url </span>
                             </label>
+                            <small className='text-gray-200'>Exm. https://i.ibb.co/t3kNLWw/men-four.png</small>
                             <input
                                 className='input input-bordered input-primary w-full text-secondary'
                                 type="text"

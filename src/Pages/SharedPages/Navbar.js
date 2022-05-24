@@ -1,13 +1,27 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
+import LoadingSpinner from './LoadingSpinner';
 
 const Navbar = () => {
-
+    const [user] = useAuthState(auth);
     const menuLinks = <>
-        <li><Link to='/'>Home</Link></li> 
-        <li><Link to='/about'>About</Link></li> 
-        <li><Link to='/contact'>Contact</Link></li> 
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/about-us'>About</Link></li>
+        <li><Link to='/contact-us'>Contact</Link></li>
+        <li><Link to='/blog'>Blog</Link></li>
     </>
+
+const logOutUser = () => {
+    signOut(auth);
+    localStorage.removeItem('accessToken')
+    toast.success('Log out successful!')
+  };
+  
+
     return (
         <div className="navbar bg-primary text-white md:px-10 sticky top-0 z-50">
             <div className="navbar-start">
@@ -19,7 +33,7 @@ const Navbar = () => {
                         {menuLinks}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl md:text-3xl" to='/'>Tork Bicycle</Link>
+                <Link className="btn btn-ghost normal-case text-xl md:text-3xl" to='/'>Torq Bicycle</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 text-lg">
@@ -27,10 +41,21 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className="dropdown dropdown-end">
+                {
+                    user 
+                    ? 
+                    <button class="btn btn-xs btn-secondary text-white md:mr-10 lg:mr-10 mr-3"><Link to='/dashboard'>Dashboard</Link></button>
+                    :
+                    <button class="btn btn-xs sm:btn-sm md:btn-md  btn-secondary text-white mr-10 "><Link to='/login'>Login</Link></button>
+                }
+
+
+                {
+                    user && 
+                    <div className="dropdown dropdown-end">
                     <label tabindex="0" className="btn btn-ghost btn-circle avatar online">
                         <div className="w-10 rounded-full ring ring-white">
-                            <img src="https://api.lorem.space/image/face?hash=33791" alt=''/>
+                            <img src={user?.photoURL} alt='' />
                         </div>
                     </label>
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-primary">
@@ -40,11 +65,11 @@ const Navbar = () => {
                                 <span className="badge">New</span>
                             </Link>
                         </li>
-                        <li><Link to='/dashboard'>Dashboard</Link></li>
-                        <li><Link to='/logout'>Logout</Link></li>
-                        <li><Link to='/login'>Login</Link></li>
+                                <li><Link to='/dashboard'>Dashboard</Link></li>                               
+                                <li><Link onClick={logOutUser} to='/login'>Logout</Link></li>                  
                     </ul>
                 </div>
+                }
             </div>
         </div>
     );
