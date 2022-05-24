@@ -1,28 +1,89 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import LoadingSpinner from '../SharedPages/LoadingSpinner';
 
 const MyProfile = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth)
+    const userEmail = user?.email;
+
+    const { isLoading, data: userData, refetch } = useQuery('users', () =>
+        fetch(`http://localhost:5000/user/${userEmail}`, {
+            method: 'GET'
+        }).then(res =>
+            res.json()
+        )
+    )
+    if (isLoading) {
+        return <LoadingSpinner></LoadingSpinner>
+    }
 
     const onSubmit = data => {
-        console.log(data);
+        fetch(`https://safe-waters-55642.herokuapp.com/user/${userEmail}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res =>
+            res.json()
+        ).then(data => {
+            if (data) {
+                toast.success('Successfully updated profile information')
+            }
+        })
+        refetch()
+        reset()
     }
 
     return (
         <div className='md:w-3/6 lg:3/6 w-5/6 mx-auto my-10'>
-            <h2 className='text-center lg:text-3xl md:text-xl'>Add Your Profile Information</h2>
-            <form  onSubmit={handleSubmit(onSubmit)}>
+            <h2 className='text-center lg:text-3xl md:text-xl font-bold'>Your Profile Information</h2>
+            <div class="card md:w-5/6 mx-auto my-10 shadow-xl">
+                <div class="card-body text-center">
+                    <div class="avatar placeholder mx-auto ">
+                        <div class="bg-neutral-focus text-neutral-content rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 w-12">
+                            <img src={user?.photoURL} alt="" />
+                        </div>
+                    </div>
+                    <h1 className='font-bold p-3 text-xl'>{user?.displayName || userData?.name}</h1>
+                    <h2 className='font-semibold  text-xl'>Email: {user?.email}</h2>
+                    <p className='font-semibold  text-md'>Education: {userData?.education}</p>
+                    <p className='font-semibold  text-md'>Location: {userData?.location}</p>
+                    <p className='font-semibold  text-md'>Zip/Postal Code: {userData.zip}</p>
+                    <p className='font-semibold  text-sm px-2'>imageUrl: {user?.photoURL || userData?.image}</p>
+                    <p className='font-semibold  text-sm '>Linkedin: {userData?.linkedin} </p>
+                    <p className='font-semibold  text-sm2'>Phone: {userData?.Phone}</p>
+                </div>
+            </div>
+            <h2 className='text-center lg:text-3xl md:text-xl font-bold'>Update Your Profile Information</h2>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <label className="label">
                     <span className="label-text text-secondary">Name</span>
                 </label>
                 <input
                     className='input input-bordered input-primary w-full'
                     type="text"
-                    value={user?.displayName}
+                    defaultValue={user?.displayName}
                     {...register("name", {
+                        required: {
+                            value: true,
+                        }
+                    })}
+                />
+                <label className="label">
+                    <span className="label-text text-secondary">Email</span>
+                </label>
+                <input
+                    className='input input-bordered input-primary w-full'
+                    type="email"
+                    defaultValue={user?.email}
+                    {...register("email", {
                         required: {
                             value: true,
                         }
@@ -34,10 +95,33 @@ const MyProfile = () => {
                 <input
                     className='input input-bordered input-primary w-full'
                     type="text"
-                    placeholder='Enter your official position. Exm: CEO '
+                    placeholder='Enter your educational qualification'
                     {...register("education", {
                         required: {
                             value: true,
+                        }
+                    })}
+                />
+                <label className="label">
+                    <span className="label-text text-secondary">Location</span>
+                </label>
+                <input
+                    className='input input-bordered input-primary w-full'
+                    type="text"
+                    placeholder='City or Town'
+                    {...register("location")}
+                />
+                <label className="label">
+                    <span className="label-text text-secondary">Zip Code</span>
+                </label>
+                <input
+                    className='input input-bordered input-primary w-full mb-3'
+                    type="number"
+                    placeholder='Enter your zip or postal code'
+                    {...register("zip", {
+                        required: {
+                            value: true,
+                            message: "Phone number is required"
                         }
                     })}
                 />
@@ -47,7 +131,7 @@ const MyProfile = () => {
                 <input
                     className='input input-bordered input-primary w-full'
                     type="text"
-                    value={user.photoURL}
+                    defaultValue={user?.photoURL}
                     {...register("image")}
                 />
                 <label className="label">
@@ -56,31 +140,28 @@ const MyProfile = () => {
                 <input
                     className='input input-bordered input-primary w-full'
                     type="text"
-                    placeholder='Enter your rating out of 5'
+                    placeholder='Enter your linkedin profile'
                     {...register("linkedin")}
                 />
 
                 <label className="label">
-                    <span className="label-text text-secondary">Your valuable review</span>
+                    <span className="label-text text-secondary">Phone</span>
                 </label>
-                <textarea
-                    className='input input-bordered input-primary w-full'
-                    type="text"
-                    placeholder='Enter your thought about our services'
-                    {...register("userReview", {
+                <input
+                    className='input input-bordered input-primary w-full mb-3'
+                    type="number"
+                    placeholder='Enter your phone number'
+                    {...register("Phone", {
                         required: {
                             value: true,
                             message: "Phone number is required"
                         }
                     })}
                 />
-                <label className="label">
-                    {errors.userReview?.type === 'required' && <span className="label-text-alt text-error">{errors.userReview.message}</span>}
-                </label>
 
 
 
-                <input className='btn btn-secondary w-full text-white mb-7 block' type="submit" value="Add Review" />
+                <input className='btn btn-secondary w-full text-white mt-7 block' type="submit" value="Update Your Profile" />
             </form>
         </div>
     );

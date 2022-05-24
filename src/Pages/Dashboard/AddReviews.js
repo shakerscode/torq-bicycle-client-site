@@ -103,7 +103,7 @@ const AddReviews = () => {
                     {...register("userReview", {
                         required: {
                             value: true,
-                            message: "Phone number is required"
+                            message: "Review is required"
                         }
                     })}
                 />

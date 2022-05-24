@@ -38,7 +38,11 @@ function App() {
         <Route path='/contact-us' element={<Contact></Contact>}></Route>
         <Route path='/Blog' element={<Blog></Blog>}></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
-        <Route path='/my-profile' element={<MyProfile></MyProfile>}></Route>
+        
+        <Route path='/my-profile' element={<RequireAuth>
+          <MyProfile></MyProfile>
+        </RequireAuth>}></Route>
+
         <Route path='/dashboard' element={
           <RequireAuth>
             <Dashboard></Dashboard>

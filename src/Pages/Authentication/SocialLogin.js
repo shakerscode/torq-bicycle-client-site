@@ -35,7 +35,7 @@ const SocialLogin = () => {
 
     return (
         <>
-            <button onClick={loginWithGoogle}  className="btn text-white btn-secondary">Continue With Google</button>  
+            <button onClick={loginWithGoogle}  className="btn text-white btn-error">Continue With Google</button>  
             <button  className="btn text-white btn-info ">Continue With Facebook</button> 
             <button  className="btn  text-white">Continue With Github</button>
         </>
