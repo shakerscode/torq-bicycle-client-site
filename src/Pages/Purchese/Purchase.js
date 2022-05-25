@@ -1,7 +1,6 @@
-import { data } from 'autoprefixer';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -13,8 +12,8 @@ const Purchase = () => {
     const [btnDisable, setBtnDisable] = useState(false)
     const [user] = useAuthState(auth)
     const [error, setErrors] = useState('');
+    const [productQuantity, setProductQuantity] = useState(0)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
 
     const { isLoading, data: singleProduct } = useQuery('productId', () =>
         fetch(`https://safe-waters-55642.herokuapp.com/product/${id}`).then(res =>
@@ -24,35 +23,45 @@ const Purchase = () => {
     if (isLoading) {
         return <LoadingSpinner></LoadingSpinner>
     }
-    
+
+   console.log(productQuantity);
+
     const { _id, name, image, shortDesc, price, minOrder, availableQuantity } = singleProduct;
 
     
-   
-    const onSubmit = data => {
-        if(data.quantity > availableQuantity){
-            setBtnDisable(true)
-            return setErrors('Your entered quantity is available in our stock')
-        }else if(data.quantity < minOrder){
-            setBtnDisable(true)
-            return setErrors('Please enter minimum 100 pieces for placing order')
-        }
-            setErrors('')
-            setBtnDisable(false)
+    const handleQuantity = e =>{
+        
+            const inputQuantity = e.target.value;
+            if (inputQuantity > availableQuantity || inputQuantity < minOrder) {
+                setBtnDisable(true)
+                 return setErrors('Must enter min 101 piece and Maximum 999 piece')
+            }
+            else if (inputQuantity < availableQuantity && inputQuantity > minOrder) {
+                setBtnDisable(false)
+                setErrors('')
+                setProductQuantity(inputQuantity)
+            }
+    }
 
-            fetch('https://safe-waters-55642.herokuapp.com/orders',{
-                method: 'POST',
-                headers:{
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(res=>res.json())
-            .then(data=> {
-                if(data){
+
+    const onSubmit = data => {
+        data.quantity = productQuantity;
+        // console.log(data);
+        const order = data;
+
+        fetch('https://safe-waters-55642.herokuapp.com/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
                     toast.success('Successfully placed order')
                     reset()
-                }else{
+                } else {
                     toast.error('An error ocurred while placing order')
                 }
             })
@@ -113,13 +122,10 @@ const Purchase = () => {
                                 {...register("address", {
                                     required: {
                                         value: true,
-                                        message: "Phone number is required"
+                                        message: "Address is required"
                                     }
                                 })}
                             />
-                            <label className="label">
-                                {errors.address?.type === 'required' && <span className="label-text-alt text-error">{errors.address.message}</span>} 
-                            </label>
 
                             <label className="label">
                                 <span className="label-text text-secondary">Phone Number</span>
@@ -128,15 +134,15 @@ const Purchase = () => {
                                 className='input input-bordered input-primary w-full'
                                 type="number"
                                 placeholder='Enter your active phone number'
-                                {...register("phone",{
+                                {...register("phone", {
                                     required: {
                                         value: true,
                                         message: "Phone number is required"
                                     }
                                 })}
                             />
-                             <label className="label">
-                                {errors.phone?.type === 'required' && <span className="label-text-alt text-error">{errors.phone.message}</span>} 
+                            <label className="label">
+                                {errors.phone?.type === 'required' && <span className="label-text-alt text-error">{errors.phone.message}</span>}
                             </label>
 
                             <label className="label">
@@ -161,27 +167,22 @@ const Purchase = () => {
                                 <span className="label-text text-secondary">Quantity</span>
                             </label>
                             <input
-                                className='input input-bordered input-primary w-full'
-                                type="number"
-                                onChange={(e)=> console.log(e.target.value)}
-                                defaultValue={minOrder}
-                                {...register("quantity",  {
-                                    required: {
-                                        value: true,
-                                        message: "Product quantity is required"
-                                    }
-                                })}
-                            />
-                            <label className="label">
+                            onChange={handleQuantity}
+                            required
+                             className='input input-bordered input-primary w-full' 
+                             type="text"
+                             placeholder='Enter you quantity'
+                             />
+                              <label className="label">
                                 {errors.quantity?.type === 'required' && <span className="label-text-alt text-error">{errors.quantity.message}</span>}
                                 {error && <span className="label-text-alt text-error">{error}</span>}
                             </label>
 
-                            <input disabled={btnDisable} className='btn btn-secondary w-full text-white mt-7 block' type="submit" value="Place Order" />
+                            <input className={btnDisable ? 'btn-disabled btn btn-secondary w-full text-white mt-7 block' : 'btn btn-secondary w-full text-white mt-7 block'} type="submit" value="Place Order" />
                         </form>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     );
 };

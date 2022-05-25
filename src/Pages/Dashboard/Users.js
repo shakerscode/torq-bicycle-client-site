@@ -10,8 +10,8 @@ const Users = () => {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
-        }).then(res => res.json()
-        )
+        })
+        .then(res => res.json())
     )
     if (isLoading) {
         return <LoadingSpinner></LoadingSpinner>
@@ -33,7 +33,7 @@ const Users = () => {
                     <tbody>
                         {
                             users?.map((user, index) => <AllUser 
-                            key={index} 
+                            key={user._id} 
                             index={index} 
                             user={user}
                             refetch={refetch}

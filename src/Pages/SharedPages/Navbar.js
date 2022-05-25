@@ -55,8 +55,7 @@ const logOutUser = () => {
                      :
                     <button className="btn btn-xs sm:btn-sm md:btn-md  btn-secondary text-white mr-10 "><Link to='/login'>Login</Link></button>
                 }
-
-
+                
                 {
                     user && 
                     <div className="dropdown dropdown-end">
@@ -66,12 +65,6 @@ const logOutUser = () => {
                         </div>
                     </label>
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-primary">
-                        <li>
-                            <Link to='/my-profile' className="justify-between">
-                                Profile
-                                
-                            </Link>
-                        </li>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>                               
                                 <li><Link onClick={logOutUser} to='/login'>Logout</Link></li>                  
                     </ul>

@@ -34,7 +34,7 @@ const OrderDelete = ({ deleteModal, refetch, isLoading }) => {
             <input type="checkbox" id="delete-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <label for="delete-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label for="delete-modal" className="btn btn-sm btn-circle absolute btn-secondary text-white right-2 top-2">✕</label>
                     <h3 className="font-bold lg:text-lg md:text-lg text-xl mt-10 text-center text-error">Are you sure you want to cancel you order? </h3>
                     <p className="py-4 text-center text-error">Once you click Cancel button your order will be deleted permanently.</p>
                     <div className="modal-action justify-center">

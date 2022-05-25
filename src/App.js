@@ -26,6 +26,7 @@ import RequireAdmin from './Pages/Authentication/RequireAdmin';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
 import useAdmin from './hooks/useAdmin';
+import RequireUser from './Pages/Authentication/RequireUser';
 
 
 function App() {
@@ -59,8 +60,9 @@ const [admin] = useAdmin(user)
           </RequireAuth>
         }>
           
-          <Route index element={<MyOrders></MyOrders>}/>
-          <Route path='/dashboard/add-reviews' element={<AddReviews></AddReviews>}/>
+          <Route index element={<MyProfile></MyProfile>}/>
+          <Route path='/dashboard/my-orders' element={<RequireUser><MyOrders></MyOrders></RequireUser>}/>
+          <Route path='/dashboard/add-reviews' element={<RequireUser><AddReviews></AddReviews></RequireUser>}/>
           <Route path='/dashboard/users' element={<RequireAdmin><Users></Users></RequireAdmin>}/>
           <Route path='/dashboard/manage-all-orders' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}/>
           <Route path='/dashboard/add-product' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}/>
