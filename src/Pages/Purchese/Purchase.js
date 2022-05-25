@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -24,29 +24,26 @@ const Purchase = () => {
         return <LoadingSpinner></LoadingSpinner>
     }
 
-   console.log(productQuantity);
 
     const { _id, name, image, shortDesc, price, minOrder, availableQuantity } = singleProduct;
 
-    
+    console.log(minOrder);
     const handleQuantity = e =>{
-        
             const inputQuantity = e.target.value;
-            if (inputQuantity > availableQuantity || inputQuantity < minOrder) {
+            if (inputQuantity > parseInt(availableQuantity) || inputQuantity < parseInt(minOrder)) {
                 setBtnDisable(true)
-                 return setErrors('Must enter min 101 piece and Maximum 999 piece')
+                 return setErrors(`Must enter min ${minOrder} piece and Maximum ${availableQuantity} piece`)
             }
-            else if (inputQuantity < availableQuantity && inputQuantity > minOrder) {
+            else if (inputQuantity < parseInt(availableQuantity) && inputQuantity > parseInt(minOrder)) {
                 setBtnDisable(false)
                 setErrors('')
-                setProductQuantity(inputQuantity)
+                setProductQuantity((inputQuantity))
             }
     }
 
 
     const onSubmit = data => {
         data.quantity = productQuantity;
-        // console.log(data);
         const order = data;
 
         fetch('https://safe-waters-55642.herokuapp.com/orders', {
