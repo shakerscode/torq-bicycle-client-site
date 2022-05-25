@@ -6,9 +6,9 @@ import blankStar from '../../images/icons/blank-star.png';
 const Review = ({ review }) => {
     const { name, image, userReview, position, rating } = review;
     return (
-        <div class="card bg-base-100 shadow-xl">
-            <div class="avatar flex justify-between items-center p-6">
-                <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+        <div className="card bg-base-100 shadow-xl">
+            <div className="avatar flex justify-between items-center p-6">
+                <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={image} alt='reviewer' />
                 </div>
                 <div className='pt-6'>
@@ -16,10 +16,10 @@ const Review = ({ review }) => {
                     <small>{position}</small>
                 </div>
             </div>
-            <div class="px-7 items-center text-center">
+            <div className="px-7 items-center text-center">
                 <p>{userReview}</p>
-                <div class="p-7">
-                    <div class="rating">
+                <div className="p-7">
+                    <div className="rating">
                         {
                             parseInt(rating) === 5 && <>
                                 <img src={star} alt="" />

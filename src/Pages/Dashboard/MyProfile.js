@@ -43,10 +43,10 @@ const MyProfile = () => {
     return (
         <div className='md:w-3/6 lg:3/6 w-5/6 mx-auto my-10'>
             <h2 className='text-center lg:text-3xl md:text-xl font-bold'>Your Profile Information</h2>
-            <div class="card md:w-5/6 mx-auto my-10 shadow-xl">
-                <div class="card-body text-center">
-                    <div class="avatar placeholder mx-auto ">
-                        <div class="bg-neutral-focus text-neutral-content rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 w-12">
+            <div className="card md:w-5/6 mx-auto my-10 shadow-xl">
+                <div className="card-body text-center">
+                    <div className="avatar placeholder mx-auto ">
+                        <div className="bg-neutral-focus text-neutral-content rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 w-12">
                             <img src={user?.photoURL} alt="" />
                         </div>
                     </div>

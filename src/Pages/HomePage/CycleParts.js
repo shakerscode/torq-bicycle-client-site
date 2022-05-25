@@ -6,17 +6,17 @@ const CycleParts = ({ part }) => {
     const navigate = useNavigate()
     const {_id, name, image, shortDesc, minOrder, availableQuantity, price} = part;
     return (
-        <div class="card max-w-sm shadow-xl">
-            <figure class="px-10 pt-10">
-                <img src={image} alt="products" class="rounded-xl" />
+        <div className="card max-w-sm shadow-xl">
+            <figure className="px-10 pt-10">
+                <img src={image} alt="products" className="rounded-xl" />
             </figure>
-            <div class="card-body items-center text-center">
-                <h2 class="card-title">{name}</h2>
+            <div className="card-body items-center text-center">
+                <h2 className="card-title">{name}</h2>
                 <p className='text-gray-500'>{shortDesc.slice(0, 100)}...</p>
                 <p className='text-md'>Min. Order: {minOrder} piece</p>
                 <p>Available: {availableQuantity}</p>
                 <p>Per Pice: {price}$</p>
-                <div onClick={()=> navigate(`/purchase/${_id}`)} class="card-actions">
+                <div onClick={()=> navigate(`/purchase/${_id}`)} className="card-actions">
                     <PrimaryBtn>Buy Now</PrimaryBtn>
                 </div>
             </div>

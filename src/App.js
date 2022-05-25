@@ -18,6 +18,11 @@ import MyOrders from './Pages/Dashboard/MyOrders';
 import AddReviews from './Pages/Dashboard/AddReviews';
 import Reviews from './Pages/Reviews/Reviews';
 import MyProfile from './Pages/Dashboard/MyProfile';
+import Users from './Pages/Dashboard/Users';
+import ManageOrders from './Pages/Dashboard/ManageOrders';
+import AddProduct from './Pages/Dashboard/AddProduct';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
+import RequireAdmin from './Pages/Authentication/RequireAdmin';
 
 
 function App() {
@@ -50,6 +55,10 @@ function App() {
         }>
           <Route index element={<MyOrders></MyOrders>}/>
           <Route path='/dashboard/add-reviews' element={<AddReviews></AddReviews>}/>
+          <Route path='/dashboard/users' element={<RequireAdmin><Users></Users></RequireAdmin>}/>
+          <Route path='/dashboard/manage-all-orders' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}/>
+          <Route path='/dashboard/add-product' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}/>
+          <Route path='/dashboard/manage-product' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}/>
 
         </Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

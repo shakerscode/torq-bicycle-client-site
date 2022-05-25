@@ -2,22 +2,33 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useAdmin from '../../hooks/useAdmin';
 
 const Dashboard = () => {
     const [user] = useAuthState(auth)
+    const [admin] = useAdmin(user)
     return (
-        <div class="drawer drawer-mobile px-5">
-            <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content">
+        <div className="drawer drawer-mobile px-5">
+            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
                 <h1 className='md:text-3xl lg:text-3xl text-xl text-secondary py-5 font-bold'>{user.displayName}, Welcome to your dashboard</h1>
                 <Outlet></Outlet>
             </div>
-            <div class="drawer-side">
-                <label for="my-drawer-2" class="drawer-overlay"></label>
-                <ul class="menu p-4 overflow-y-auto w-44 bg-base-100 text-base-content">
-                    
+            <div className="drawer-side">
+                <label for="my-drawer-2" className="drawer-overlay"></label>
+                <ul className="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
+
                     <li><Link className='font-semibold' to='/dashboard'>My Orders</Link></li>
-                    <li><Link className='font-semibold' to='/dashboard/add-reviews'>Add Reviews</Link></li> 
+                    <li><Link className='font-semibold' to='/dashboard/add-reviews'>Add Reviews</Link></li>
+                    {
+                        admin && <>
+                            <li><Link className='font-semibold' to='/dashboard/users'>Users</Link></li>
+                            <li><Link className='font-semibold' to='/dashboard/manage-all-orders'>Manage All Orders</Link></li>
+                            <li><Link className='font-semibold' to='/dashboard/add-product'>Add A Product</Link></li>
+                            <li><Link className='font-semibold' to='/dashboard/manage-product'>Manage Products</Link></li>
+                        </>
+                    }
+
                 </ul>
 
             </div>

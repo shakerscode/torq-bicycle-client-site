@@ -62,12 +62,12 @@ const Purchase = () => {
     return (
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-8 w-5/6 mx-auto my-12'>
-                <div class="card  shadow-xl">
-                    <div class="card-body">
-                        <h2 class="text-center md:text-3xl lg:text-3xl text-2xl text-secondary font-bold">Your Product Information</h2>
+                <div className="card  shadow-xl">
+                    <div className="card-body">
+                        <h2 className="text-center md:text-3xl lg:text-3xl text-2xl text-secondary font-bold">Your Product Information</h2>
                         <div className=''>
                             <img className='w-44 mx-auto' src={image} alt="" />
-                            <div class="text-center">
+                            <div className="text-center">
                                 <h3 className='text-lg font-bold'>Your Product id: {_id}</h3>
                                 <h2 className='text-lg font-bold'>{name}</h2>
                                 <p>Per Piece Price: {price}$</p>
@@ -78,9 +78,9 @@ const Purchase = () => {
                         </div>
                     </div>
                 </div>
-                <div class="card shadow-xl">
-                    <div class="card-body">
-                        <h2 class="text-center md:text-3xl lg:text-3xl text-2xl text-secondary font-bold">Place Order</h2>
+                <div className="card shadow-xl">
+                    <div className="card-body">
+                        <h2 className="text-center md:text-3xl lg:text-3xl text-2xl text-secondary font-bold">Place Order</h2>
                         <form className='' onSubmit={handleSubmit(onSubmit)}>
                             <label className="label">
                                 <span className="label-text text-secondary">Name</span>
