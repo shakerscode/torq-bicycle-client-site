@@ -18,8 +18,11 @@ const Dashboard = () => {
                 <label for="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
 
-                    <li><Link className='font-semibold' to='/dashboard'>My Orders</Link></li>
-                    <li><Link className='font-semibold' to='/dashboard/add-reviews'>Add Reviews</Link></li>
+                    {!admin && <>
+                        <li><Link className='font-semibold' to='/dashboard'>My Orders</Link></li>
+                        <li><Link className='font-semibold' to='/dashboard/add-reviews'>Add Reviews</Link></li>
+                        </>
+                        }
                     {
                         admin && <>
                             <li><Link className='font-semibold' to='/dashboard/users'>Users</Link></li>

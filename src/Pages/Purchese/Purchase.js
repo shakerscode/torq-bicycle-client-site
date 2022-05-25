@@ -50,7 +50,6 @@ const Purchase = () => {
             .then(res=>res.json())
             .then(data=> {
                 if(data){
-                    console.log(data);
                     toast.success('Successfully placed order')
                     reset()
                 }else{

@@ -1,41 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
+import LoadingSpinner from '../SharedPages/LoadingSpinner';
 
-const OrderDelete = ({ deleteModal, refetch }) => {
+const OrderDelete = ({ deleteModal, refetch, isLoading }) => {
     const id = deleteModal;
     const [yes, setYes] = useState(false)
-   
-        useEffect(() => {
-            if (yes) {
-                fetch(`https://safe-waters-55642.herokuapp.com/user/${id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                    }
-                })
-                .then(res=> res.json())
-                .then(data=> {
-                    if(data.deletedCount){
+
+    useEffect(() => {
+        if (yes) {
+            fetch(`https://safe-waters-55642.herokuapp.com/user/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
                         refetch()
                     }
                 })
-            }
-        }, [yes, id]) 
-    
+        }
+    }, [yes, id])
+
     const deleteOrder = () => {
         setYes(true)
+    }
+    if (isLoading) {
+        return <LoadingSpinner></LoadingSpinner>
     }
 
     return (
         <div>
-            <input type="checkbox" id="delete-modal" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                    <label for="delete-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
-                    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                    <div class="modal-action justify-center">
-                        <label onClick={deleteOrder} for="delete-modal" class="btn">Yay!</label>
+            <input type="checkbox" id="delete-modal" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <label for="delete-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h3 className="font-bold lg:text-lg md:text-lg text-xl mt-10 text-center text-error">Are you sure you want to cancel you order? </h3>
+                    <p className="py-4 text-center text-error">Once you click Cancel button your order will be deleted permanently.</p>
+                    <div className="modal-action justify-center">
+                        <label onClick={deleteOrder} for="delete-modal" className="btn btn-error text-white">Cancel Order</label>
                     </div>
                 </div>
             </div>

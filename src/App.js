@@ -23,9 +23,14 @@ import ManageOrders from './Pages/Dashboard/ManageOrders';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import RequireAdmin from './Pages/Authentication/RequireAdmin';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from './firebase.init';
+import useAdmin from './hooks/useAdmin';
 
 
 function App() {
+  const [user] = useAuthState(auth)
+const [admin] = useAdmin(user)
   return (
     <div>
       <Navbar></Navbar>
@@ -53,6 +58,7 @@ function App() {
             <Dashboard></Dashboard>
           </RequireAuth>
         }>
+          
           <Route index element={<MyOrders></MyOrders>}/>
           <Route path='/dashboard/add-reviews' element={<AddReviews></AddReviews>}/>
           <Route path='/dashboard/users' element={<RequireAdmin><Users></Users></RequireAdmin>}/>

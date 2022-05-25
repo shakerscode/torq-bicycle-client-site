@@ -49,7 +49,7 @@ const logOutUser = () => {
                     <>
                     <label for="my-drawer-2" className="btn btn-sm btn-primary text-white mr-2 drawer-button lg:hidden">Dashboard</label>
 
-                     <button for="my-drawer-2" className="btn btn-sm btn-secondary text-white hidden lg:block md:mr-10 lg:mr-10 mr-3"><Link to='/dashboard'>Dashboard</Link></button>
+                     <button for="my-drawer-2" className="btn btn-sm btn-secondary text-white hidden lg:block md:mr-5 lg:mr-5 mr-3"><Link to='/dashboard'>Dashboard</Link></button>
 
                     </>                   
                      :

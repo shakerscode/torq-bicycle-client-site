@@ -34,9 +34,9 @@ const AllUser = ({ user, index, refetch }) => {
                 {
                     user.role !== 'admin'
                         ?
-                        <button onClick={makeUserAdmin} class="btn btn-xs btn-secondary text-white">Make Admin</button>
+                        <button onClick={makeUserAdmin}   className="btn btn-xs btn-secondary text-white">Make Admin</button>
                         :
-                        <button class="btn btn-xs btn-success text-white">Already Admin</button>
+                        <button   className="btn btn-xs btn-success text-white">Already Admin</button>
                 }
             </td>
         </tr>

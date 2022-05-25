@@ -71,6 +71,7 @@ const MyOrders = () => {
                { deleteModal && <OrderDelete 
                deleteModal={deleteModal}
                refetch={refetch}
+               isLoading={isLoading}
                ></OrderDelete>
                    }
             
