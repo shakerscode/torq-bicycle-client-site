@@ -26,7 +26,6 @@ const Login = () => {
 
     useEffect(() => {
         if (token) {
-            console.log(token);
             navigate(from, { replace: true });
             toast.success('Successfully logged in')
         }
