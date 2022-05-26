@@ -28,6 +28,7 @@ import auth from './firebase.init';
 import useAdmin from './hooks/useAdmin';
 import RequireUser from './Pages/Authentication/RequireUser';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import Payment from './Pages/Payment/Payment';
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
 
           <Route index element={<MyProfile></MyProfile>} />
           <Route path='/dashboard/my-orders' element={<RequireUser><MyOrders></MyOrders></RequireUser>} />
+          <Route path='/dashboard/payment/:id' element={<RequireUser><Payment></Payment></RequireUser>} />
           <Route path='/dashboard/add-reviews' element={<RequireUser><AddReviews></AddReviews></RequireUser>} />
           <Route path='/dashboard/users' element={<RequireAdmin><Users></Users></RequireAdmin>} />
           <Route path='/dashboard/manage-all-orders' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>} />

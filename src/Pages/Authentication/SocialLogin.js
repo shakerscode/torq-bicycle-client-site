@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import React, { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -26,11 +25,12 @@ const SocialLogin = () => {
         }
     }, [token, from, navigate])
 
-    if (error) {
-        return toast.error(`${error.message}`)
-      }
+    
       if (loading) {
         return <LoadingSpinner></LoadingSpinner>;
+      }
+      if (error) {
+        return toast.error(`${error.message}`)
       }
 
     return (

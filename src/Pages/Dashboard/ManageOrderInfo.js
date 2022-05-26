@@ -1,7 +1,26 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const ManageOrderInfo = ({ userOrder, index, setOrderAdminDeleting }) => {
-    const { _id, name, email, partsName, price, quantity, paymentStatus } = userOrder;
+    const { _id, name, email, partsName, price, quantity, paymentStatus, status } = userOrder;
+
+   
+    const updatingStatus = () =>{
+        fetch(`https://safe-waters-55642.herokuapp.com/order/updating/${_id}`,{
+            method: 'PATCH',
+            headers: {
+                'content-type' : 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res=> res.json())
+            .then(data=> {
+                if(data){
+
+                    toast.success('Successfully updated!')
+                }
+            })
+    }
     return (
         <tr>
             <th>{index + 1}</th>
@@ -14,7 +33,11 @@ const ManageOrderInfo = ({ userOrder, index, setOrderAdminDeleting }) => {
                 {
                     paymentStatus === 'paid'
                         ?
-                        <button class="btn btn-sm mr-2 btn-success text-white">Paid</button>
+                        status 
+                        ? 
+                        <button class="btn btn-xs mr-2 btn-info text-white">Shipped</button>
+                        :
+                        <button onClick={updatingStatus} class="btn btn-sm mr-2 btn-success text-white">pending</button>
                         :
                         <>
                         <button class="btn btn-xs mr-2 btn-info text-white">Unpaid</button>
