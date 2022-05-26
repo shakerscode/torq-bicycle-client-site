@@ -18,7 +18,7 @@ if(isLoading){
 
 return (
     <div className='mt-10'>
-        <h1 className='text-center text-black text-4xl font-bold'>Our Products</h1>
+        <h1 className='text-center text-secondary text-4xl font-bold'>Manage Your Products</h1>
         <div className="card">
             <div className="card-body mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">
                 {

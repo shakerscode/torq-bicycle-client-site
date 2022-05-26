@@ -27,6 +27,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
 import useAdmin from './hooks/useAdmin';
 import RequireUser from './Pages/Authentication/RequireUser';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 
 
 function App() {
@@ -47,8 +48,9 @@ function App() {
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/about-us' element={<About></About>}></Route>
         <Route path='/contact-us' element={<Contact></Contact>}></Route>
-        <Route path='/Blog' element={<Blog></Blog>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
+        <Route path='/my-portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
 
         <Route path='/my-profile' element={<RequireAuth>
           <MyProfile></MyProfile>

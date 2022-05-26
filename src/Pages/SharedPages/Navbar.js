@@ -13,7 +13,8 @@ const Navbar = () => {
         <li><Link to='/contact-us'>Contact</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/reviews'>Reviews</Link></li>
-        {user && <li><Link to='/my-profile'>Profile</Link></li>}
+        <li><Link to='/my-portfolio'>Portfolio</Link></li>
+        {/* {user && <li><Link to='/my-profile'>Profile</Link></li>} */}
     </>
 
 const logOutUser = () => {

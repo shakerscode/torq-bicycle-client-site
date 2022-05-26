@@ -18,7 +18,7 @@ const AdminOrderDelete = ({ adminOrderDeleting, refetch, isLoading }) => {
                 .then(data => {
                     if (data.deletedCount) {
                         refetch()
-                        toast.success('Successfully deleted')
+                        toast.success('Successfully canceled')
                     }
                 })
     
