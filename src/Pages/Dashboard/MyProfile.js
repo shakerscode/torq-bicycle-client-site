@@ -54,7 +54,7 @@ const MyProfile = () => {
                     <h2 className='font-semibold  text-xl'>Email: {user?.email}</h2>
                     <p className='font-semibold  text-md'>Education: {userData?.education}</p>
                     <p className='font-semibold  text-md'>Location: {userData?.location}</p>
-                    <p className='font-semibold  text-md'>Zip/Postal Code: {userData.zip}</p>
+                    <p className='font-semibold  text-md'>Zip/Postal Code: {userData?.zip}</p>
                     <p className='font-semibold  text-sm px-2'>imageUrl: {user?.photoURL || userData?.image}</p>
                     <p className='font-semibold  text-sm '>Linkedin: {userData?.linkedin} </p>
                     <p className='font-semibold  text-sm2'>Phone: {userData?.Phone}</p>

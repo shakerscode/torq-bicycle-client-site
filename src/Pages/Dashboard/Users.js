@@ -4,10 +4,11 @@ import LoadingSpinner from '../SharedPages/LoadingSpinner';
 import AllUser from './AllUser';
 
 const Users = () => {
-    const { isLoading, data: users, refetch } = useQuery('users', () =>
+    const { isLoading, data: users, refetch } = useQuery('allUsers', () =>
         fetch('https://safe-waters-55642.herokuapp.com/users', {
             method: 'GET',
             headers: {
+                'content-type' : 'application/json',
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
@@ -19,7 +20,7 @@ const Users = () => {
 
     return (
         <div>
-            <h1 className='text-center text-2xl font-semibold py-3'>You have {users.length} users</h1>
+            <h1 className='text-center text-2xl font-semibold py-3'>You have {users?.length} users</h1>
             <div   className="overflow-x-auto">
                 <table   className="table table-zebra w-full"> 
                     <thead>

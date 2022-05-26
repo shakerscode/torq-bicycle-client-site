@@ -31,14 +31,14 @@ import RequireUser from './Pages/Authentication/RequireUser';
 
 function App() {
   const [user] = useAuthState(auth)
-const [admin] = useAdmin(user)
+  const [admin] = useAdmin(user)
   return (
     <div>
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<HomePage></HomePage>}></Route>
         <Route path='/home' element={<HomePage></HomePage>}></Route>
-        <Route path='/purchase/:id'element={
+        <Route path='/purchase/:id' element={
           <RequireAuth>
             <Purchase></Purchase>
           </RequireAuth>
@@ -49,7 +49,7 @@ const [admin] = useAdmin(user)
         <Route path='/contact-us' element={<Contact></Contact>}></Route>
         <Route path='/Blog' element={<Blog></Blog>}></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
-        
+
         <Route path='/my-profile' element={<RequireAuth>
           <MyProfile></MyProfile>
         </RequireAuth>}></Route>
@@ -59,14 +59,14 @@ const [admin] = useAdmin(user)
             <Dashboard></Dashboard>
           </RequireAuth>
         }>
-          
-          <Route index element={<MyProfile></MyProfile>}/>
-          <Route path='/dashboard/my-orders' element={<RequireUser><MyOrders></MyOrders></RequireUser>}/>
-          <Route path='/dashboard/add-reviews' element={<RequireUser><AddReviews></AddReviews></RequireUser>}/>
-          <Route path='/dashboard/users' element={<RequireAdmin><Users></Users></RequireAdmin>}/>
-          <Route path='/dashboard/manage-all-orders' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}/>
-          <Route path='/dashboard/add-product' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}/>
-          <Route path='/dashboard/manage-product' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}/>
+
+          <Route index element={<MyProfile></MyProfile>} />
+          <Route path='/dashboard/my-orders' element={<RequireUser><MyOrders></MyOrders></RequireUser>} />
+          <Route path='/dashboard/add-reviews' element={<RequireUser><AddReviews></AddReviews></RequireUser>} />
+          <Route path='/dashboard/users' element={<RequireAdmin><Users></Users></RequireAdmin>} />
+          <Route path='/dashboard/manage-all-orders' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>} />
+          <Route path='/dashboard/add-product' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>} />
+          <Route path='/dashboard/manage-product' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>} />
 
         </Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

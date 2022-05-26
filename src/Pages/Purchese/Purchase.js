@@ -27,7 +27,7 @@ const Purchase = () => {
 
     const { _id, name, image, shortDesc, price, minOrder, availableQuantity } = singleProduct;
 
-    console.log(minOrder);
+
     const handleQuantity = e =>{
             const inputQuantity = e.target.value;
             if (inputQuantity > parseInt(availableQuantity) || inputQuantity < parseInt(minOrder)) {

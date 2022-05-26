@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import LoadingSpinner from '../SharedPages/LoadingSpinner';
 
 const OrderDelete = ({ deleteModal, refetch, isLoading }) => {
@@ -17,10 +18,11 @@ const OrderDelete = ({ deleteModal, refetch, isLoading }) => {
                 .then(data => {
                     if (data.deletedCount) {
                         refetch()
+                        toast.success('Successfully deleted')
                     }
                 })
         }
-    }, [yes, id])
+    }, [yes, id, refetch])
 
     const deleteOrder = () => {
         setYes(true)
