@@ -38,7 +38,7 @@ const AdminOrderDelete = ({ adminOrderDeleting, refetch, isLoading }) => {
                     <h3 className="font-bold lg:text-lg md:text-lg text-xl mt-10 text-center text-error">Are you sure you want to cancel you order? </h3>
                     <p className="py-4 text-center text-error">Once you click Cancel button this order will be deleted permanently.</p>
                     <div onClick={deleteOrder}  class="modal-action justify-center">
-                        <label for="admin-delete" class="btn btn-md mr-2 btn-error text-white">Cancel</label>
+                        <label for="admin-delete" class="btn btn-md mr-2 btn-error text-white">Cancel Order</label>
                     </div>
                 </div>
             </div>
