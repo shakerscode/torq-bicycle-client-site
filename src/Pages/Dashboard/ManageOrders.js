@@ -60,6 +60,7 @@ const ManageOrders = () => {
                                         key={index}
                                         userOrder={userOrder}
                                         index={index}
+                                        refetch={refetch}
                                         setOrderAdminDeleting={setOrderAdminDeleting}
                                     ></ManageOrderInfo>)
                             }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const ManageOrderInfo = ({ userOrder, index, setOrderAdminDeleting }) => {
+const ManageOrderInfo = ({ userOrder, index, setOrderAdminDeleting, refetch }) => {
     const { _id, name, email, partsName, price, quantity, paymentStatus, status } = userOrder;
 
    
@@ -16,7 +16,7 @@ const ManageOrderInfo = ({ userOrder, index, setOrderAdminDeleting }) => {
         .then(res=> res.json())
             .then(data=> {
                 if(data){
-
+                    refetch()
                     toast.success('Successfully updated!')
                 }
             })
@@ -35,7 +35,7 @@ const ManageOrderInfo = ({ userOrder, index, setOrderAdminDeleting }) => {
                         ?
                         status 
                         ? 
-                        <button class="btn btn-xs mr-2 btn-info text-white">Shipped</button>
+                        <button class="btn btn-xs mr-2 btn-primary text-white">Shipped</button>
                         :
                         <button onClick={updatingStatus} class="btn btn-sm mr-2 btn-success text-white">pending</button>
                         :
