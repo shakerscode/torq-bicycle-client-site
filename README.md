@@ -1,19 +1,29 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Live site link
+Here:  [Torq Bicycle](https://torq-bicycle.web.app/).
 
-## Works Steps 
-* Created app
-* Edited app.js file
-* Installed react router
-* Using daisy ui and tailwind as css framework
-* Banner 
-* Home About
-* Home Products
-* Home Reviews
-* 
-* 
-* 
+## Introduction:
+> Hello, the web site [Torq Bicycle](https://torq-bicycle.web.app/) is a kind of website that sell parts of bicycle. Like, paddle, saddles, bike light, handle, horn etc. Here, There are two system builded.One is for users and another is for admin.
+
+# What cana user do?
+* User can buy a product and pay the price.
+* User can change there profile information.
+* User can give a review.
+* etc
+
+# What cana an admin do?
+* An Admin can cancel a order.
+* An Admin can add products.
+* An Admin can delete a product.
+* An Admin can change the status of pending button.
+* An Admin can update his profile.
+* etc
+
+## More system will be updated soon!
+
+
+
 
 ## What I used to make this website
 * React 
@@ -25,8 +35,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * React Hook Forum
 * Firebase
 * Firebase github hooks
-* 
-* 
+* Strip for payment
+* etc
 
 ## Available Scripts
 
