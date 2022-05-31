@@ -15,8 +15,8 @@ const HomeProducts = () => {
   }
 
     return (
-        <div className='mt-10'>
-            <h1 className='text-center text-black text-4xl font-bold'>Our Products</h1>
+        <div className='min-h-screen mt-7 md:mt-7 lg:mt-7'>
+            <h1 className='text-center md:text-5xl lg:text-5xl text-2xl font-bold text-secondary'>Our Products</h1>
             <div className="card">
                 <div className="card-body mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">
                     {

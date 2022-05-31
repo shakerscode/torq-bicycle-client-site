@@ -52,7 +52,7 @@ const logOutUser = () => {
 
                     </>                   
                      :
-                    <button className="btn btn-xs sm:btn-sm md:btn-md  btn-secondary text-white mr-10 "><Link to='/login'>Login</Link></button>
+                    <button className="btn btn-md btn-secondary text-white mr-10 "><Link to='/login'>Login</Link></button>
                 }
                 
                 {

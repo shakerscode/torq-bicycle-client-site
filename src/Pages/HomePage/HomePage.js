@@ -4,11 +4,13 @@ import Contacts from './Contacts';
 import HomeAbout from './HomeAbout';
 import HomeBanner from './HomeBanner';
 import HomeProducts from './HomeProducts';
+import HomeSlider from './HomeSlider';
 import ProductReview from './ProductReview';
 
 const HomePage = () => {
     return (
         <div>
+            <HomeSlider></HomeSlider>
             <HomeBanner></HomeBanner>
             <HomeAbout></HomeAbout>
             <HomeProducts></HomeProducts>
