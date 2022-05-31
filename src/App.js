@@ -34,8 +34,6 @@ import 'aos/dist/aos.css';
 AOS.init();
 
 function App() {
-  const [user] = useAuthState(auth)
-  const [admin] = useAdmin(user)
   return (
     <div className='App'>
       <Navbar></Navbar>

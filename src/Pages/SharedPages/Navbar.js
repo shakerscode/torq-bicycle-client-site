@@ -13,7 +13,9 @@ const Navbar = () => {
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/reviews'>Reviews</Link></li>
         <li><Link to='/my-portfolio'>Portfolio</Link></li>
-        {/* {user && <li><Link to='/my-profile'>Profile</Link></li>} */}
+        {user && <li>
+            <Link to='/dashboard'>Dashboard </Link>
+        </li>}
     </>
 
 const logOutUser = () => {
@@ -36,22 +38,17 @@ const logOutUser = () => {
                 </div>
                 <Link className="btn btn-ghost normal-case text-xl md:text-3xl" to='/'>Torq Bicycle</Link>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            {/* <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 text-lg">
                     {menuLinks}
                 </ul>
-            </div>
-            <div className="navbar-end">
+            </div> */}
+            <div className="navbar-end ">
+            <ul className="menu hidden lg:flex menu-horizontal p-0 text-lg">
+                    {menuLinks}
+                </ul>
                 {
-                    user 
-                    ? 
-                    <>
-                    <label for="my-drawer-2" className="btn btn-sm btn-primary text-white mr-2 drawer-button lg:hidden">Dashboard</label>
-
-                     <button for="my-drawer-2" className="btn btn-sm btn-secondary text-white hidden lg:block md:mr-5 lg:mr-5 mr-3"><Link to='/dashboard'>Dashboard</Link></button>
-
-                    </>                   
-                     :
+                    !user &&
                     <button className="btn btn-md btn-secondary text-white mr-10 "><Link to='/login'>Login</Link></button>
                 }
                 
@@ -64,7 +61,7 @@ const logOutUser = () => {
                         </div>
                     </label>
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-primary">
-                                <li><Link to='/dashboard'>Dashboard</Link></li>                               
+                                <li><Link to='/my-profile'>Profile</Link></li>                               
                                 <li><Link onClick={logOutUser} to='/login'>Logout</Link></li>                  
                     </ul>
                 </div>
