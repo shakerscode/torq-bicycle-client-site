@@ -29,13 +29,15 @@ import useAdmin from './hooks/useAdmin';
 import RequireUser from './Pages/Authentication/RequireUser';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import Payment from './Pages/Payment/Payment';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function App() {
   const [user] = useAuthState(auth)
   const [admin] = useAdmin(user)
   return (
-    <div>
+    <div className='App'>
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<HomePage></HomePage>}></Route>

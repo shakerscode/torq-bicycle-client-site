@@ -2,7 +2,14 @@ import React from 'react';
 
 const Summery = ({image, tittle, number}) => {
     return (
-        <div className='card items-center justify-center shadow-xl p-5'>
+        <div 
+        
+        data-aos="flip-up"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="1300"
+        data-aos-easing="ease-in-out"
+        className='card items-center justify-center shadow-xl p-5'>
             <div>
                 <img className='p-3 bg-sky-100 rounded-full' src={image} alt="company-summery" />
             </div>

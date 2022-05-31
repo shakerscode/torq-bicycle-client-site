@@ -6,7 +6,13 @@ import blankStar from '../../images/icons/blank-star.png';
 const Review = ({ review }) => {
     const { name, image, userReview, position, rating } = review;
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div 
+        data-aos="zoom-out-right"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="1300"
+        data-aos-easing="ease-in-out"
+        className="card bg-base-100 shadow-xl">
             <div className="avatar flex justify-between items-center p-6">
                 <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={image} alt='reviewer' />

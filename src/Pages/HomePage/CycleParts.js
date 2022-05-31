@@ -6,7 +6,13 @@ const CycleParts = ({ part }) => {
     const navigate = useNavigate()
     const {_id, name, image, shortDesc, minOrder, availableQuantity, price} = part;
     return (
-        <div className="card max-w-sm shadow-xl">
+        <div 
+        data-aos="zoom-in-up"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="1300"
+        data-aos-easing="ease-in-out"
+        className="card max-w-sm shadow-xl">
             <figure className="px-10 pt-10">
                 <img src={image} alt="products" className="rounded-xl" />
             </figure>
