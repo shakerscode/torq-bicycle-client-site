@@ -1,0 +1,11 @@
+.details-box-height{
+    height: 450px;
+    position: sticky;
+    top: 0;
+}
+@media screen and (max-width: 650px) {
+    .details-box-height{
+        height: 550px;
+    }
+    
+}

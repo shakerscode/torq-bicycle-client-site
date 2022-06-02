@@ -84,7 +84,7 @@ const MyProfile = () => {
                 <div className="card-body text-center">
                     <div className="avatar placeholder mx-auto ">
                         <div className="bg-neutral-focus text-neutral-content rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 w-12">
-                            <img src={userData?.photo ? userData?.photo : profile} alt="" />
+                            <img src={userData?.photo || user.photoURL? userData?.photo || user.photoURL : profile} alt="" />
                         </div>
                     </div>
                     <h1 className='font-bold p-3 text-2xl'>{user?.displayName || userData?.name}</h1>
@@ -181,7 +181,7 @@ const MyProfile = () => {
                                 }
                             })}
                         />
-                        <label className="label">
+                       {( userData?.photo || user?.photoURL) ? '' : <> <label className="label">
                             <span className="label-text text-secondary">Your photo </span>
                         </label>
                         <div className='input-main-div'>
@@ -199,6 +199,8 @@ const MyProfile = () => {
                         <label className="label">
                             {errors.photo?.type === 'required' && <span className="label-text-alt text-error">{errors.photo.message}</span>}
                         </label>
+                        </>
+                        }
                         <label className="label">
                             <span className="label-text text-secondary">LinkedIn</span>
                         </label>

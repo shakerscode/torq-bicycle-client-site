@@ -1,14 +1,17 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddReviews = () => {
+    const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth)
 
     const onSubmit = data => {
+        data.image = user?.photoURL;
             fetch('https://safe-waters-55642.herokuapp.com/reviews',{
                 method: 'POST',
                 headers:{
@@ -21,6 +24,7 @@ const AddReviews = () => {
                 console.log(data);
                 if(data){
                     reset()
+                    navigate('/reviews')
                     toast.success('Successfully added your review')
                 }
             })
@@ -55,16 +59,7 @@ const AddReviews = () => {
                             value: true,
                         }
                     })}
-                />
-                <label className="label">
-                    <span className="label-text text-secondary">Image Url</span>
-                </label>
-                <input
-                    className='input input-bordered input-primary w-full'
-                    type="text"
-                    value={user.photoURL}
-                    {...register("image")}
-                />
+                />  
                 <label className="label">
                     <span className="label-text text-secondary">Rating</span>
                 </label>

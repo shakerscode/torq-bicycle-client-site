@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../SharedPages/LoadingSpinner';
+import './Purchase.css'
 
 const Purchase = () => {
+    const navigate= useNavigate()
     const { id } = useParams()
-    const [btnDisable, setBtnDisable] = useState(false)
+    const [q, setQ]= useState(0)
     const [user] = useAuthState(auth)
     const [error, setErrors] = useState('');
     const [productQuantity, setProductQuantity] = useState(0)
@@ -28,22 +30,9 @@ const Purchase = () => {
     const { _id, name, image, shortDesc, price, minOrder, availableQuantity } = singleProduct;
 
 
-    const handleQuantity = e =>{
-            const inputQuantity = e.target.value;
-            if (inputQuantity > parseInt(availableQuantity) || inputQuantity < parseInt(minOrder)) {
-                setBtnDisable(true)
-                 return setErrors(`Must enter min ${minOrder} piece and Maximum ${availableQuantity} piece`)
-            }
-            else if (inputQuantity < parseInt(availableQuantity) && inputQuantity > parseInt(minOrder)) {
-                setBtnDisable(false)
-                setErrors('')
-                setProductQuantity((inputQuantity))
-            }
-    }
-
 
     const onSubmit = data => {
-        data.quantity = productQuantity;
+        data.quantity = q;
         const order = data;
 
         fetch('https://safe-waters-55642.herokuapp.com/orders', {
@@ -57,6 +46,7 @@ const Purchase = () => {
             .then(data => {
                 if (data) {
                     toast.success('Successfully placed order')
+                    navigate('/dashboard/my-orders')
                     reset()
                 } else {
                     toast.error('An error ocurred while placing order')
@@ -67,7 +57,7 @@ const Purchase = () => {
     return (
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-8 w-5/6 mx-auto my-12'>
-                <div className="card  shadow-xl">
+                <div className="card details-box-height shadow-xl">
                     <div className="card-body">
                         <h2 className="text-center md:text-3xl lg:text-3xl text-2xl text-secondary font-bold">Your Product Information</h2>
                         <div className=''>
@@ -164,7 +154,7 @@ const Purchase = () => {
                                 <span className="label-text text-secondary">Quantity</span>
                             </label>
                             <input
-                            onChange={handleQuantity}
+                            onChange={(e)=> setQ(e.target.value)}
                             required
                              className='input input-bordered input-primary w-full' 
                              type="text"
@@ -175,7 +165,7 @@ const Purchase = () => {
                                 {error && <span className="label-text-alt text-error">{error}</span>}
                             </label>
 
-                            <input className={btnDisable ? 'btn-disabled btn btn-secondary w-full text-white mt-7 block' : 'btn btn-secondary w-full text-white mt-7 block'} type="submit" value="Place Order" />
+                            <input className={q > parseInt(availableQuantity) || q < parseInt(minOrder)  ? 'btn-disabled btn btn-secondary w-full text-white mt-7 block' : 'btn btn-secondary w-full text-white mt-7 block'} type="submit" value="Place Order" />
                         </form>
                     </div>
                 </div>
