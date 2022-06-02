@@ -1,0 +1,29 @@
+.div-items{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.div-items img{
+    width: 20px;
+    height: 20px;
+    ;
+}
+.div-items p{
+    text-align: left;
+    margin-left: 20px;
+    font-weight: 500;
+}
+.div-items p a {
+    text-decoration: underline;
+    font-style: italic;
+}
+.custom-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.custom-btn img{
+    width: 24px;
+    height: 20px;
+    margin-left: 10px;
+}

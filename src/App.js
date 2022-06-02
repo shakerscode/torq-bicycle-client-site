@@ -51,7 +51,7 @@ function App() {
         <Route path='/contact-us' element={<Contact></Contact>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
-        <Route path='/my-portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
+        {/* <Route path='/my-portfolio' element={<MyPortfolio></MyPortfolio>}></Route> */}
 
         <Route path='/my-profile' element={<RequireAuth>
           <MyProfile></MyProfile>

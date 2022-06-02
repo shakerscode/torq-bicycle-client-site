@@ -8,8 +8,8 @@ const MyDescription = () => {
         <div 
         className='h-5/6 bg-no-repeat bg-center bg-cover md:flex justify-center items-center mx-auto flex-row-reverse'
         style={{
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
+            // backgroundSize: 'cover',
+            // backgroundRepeat: 'no-repeat',
             background:`url(${portfolioBanner})`
         }}> 
         <div>
@@ -20,7 +20,6 @@ const MyDescription = () => {
                     <h1 className='md:text-5xl text-4xl font-bold md:text-sky-600 text-white py-4'>Shaker Ahamed</h1>
                     <h5 className='my-1 font-lg font-semibold text-white md:text-black'>A <span className='md:text-teal-500 font-bold'>MERN</span> Developer From <span className='md:text-violet-700'>Bangladesh</span></h5>
                     <p className='text-md font-normal py-5 text-white md:text-black'>I'm a MERN stack developer based in Bangladesh,  and I'm very passionate <br /> and dedicated to my work.</p>
-                    
                     <div className='pb-4'>
                     <button className='btn px-5 py-2 btn-info text-white'>Read More</button>
                     </div>

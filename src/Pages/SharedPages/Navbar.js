@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import profile from '../../images/profile.png';
 
 const Navbar = () => {
     const [user] = useAuthState(auth);
@@ -12,7 +13,7 @@ const Navbar = () => {
         <li><Link to='/contact-us'>Contact</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/reviews'>Reviews</Link></li>
-        <li><Link to='/my-portfolio'>Portfolio</Link></li>
+        {/* <li><Link to='/my-portfolio'>Portfolio</Link></li> */}
         {user && <li>
             <Link to='/dashboard'>Dashboard </Link>
         </li>}
@@ -57,7 +58,7 @@ const logOutUser = () => {
                     <div className="dropdown dropdown-end">
                     <label tabindex="0" className="btn btn-ghost btn-circle avatar online">
                         <div className="w-10 rounded-full ring ring-white">
-                            <img src={user?.photoURL} alt='' />
+                            <img src={user?.photoURL ? user?.photoURL : profile} alt='' />
                         </div>
                     </label>
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-primary">

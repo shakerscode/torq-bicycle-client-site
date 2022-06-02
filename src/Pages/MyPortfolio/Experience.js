@@ -9,7 +9,7 @@ const Experience = () => {
             backgroundSize: 'cover',
             background:`url(${bannerExperience})`
         }}>
-            hello
+            
         </div>
     );
 };

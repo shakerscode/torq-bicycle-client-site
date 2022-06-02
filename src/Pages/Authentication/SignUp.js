@@ -7,8 +7,11 @@ import auth from '../../firebase.init'
 import LoadingSpinner from '../SharedPages/LoadingSpinner';
 import useUserToken from '../../hooks/useUserToken';
 import { toast } from 'react-toastify';
+import './Auth.css'
 
 const SignUp = () => {
+    const [imageLink, setImageLink] = useState('')
+    console.log(imageLink);
     const navigate = useNavigate();
     const [confirmPassError, setConfirmPassError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -23,14 +26,14 @@ const SignUp = () => {
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-     useEffect( ()=>{
+    useEffect(() => {
         if (token) {
             navigate('/')
             navigate(from, { replace: true });
             toast.success('Successfully sign up')
-    
+
         }
-    },[token, navigate])
+    }, [token, navigate, from])
 
     if (loading || updating) {
         return <LoadingSpinner></LoadingSpinner>;
@@ -38,10 +41,10 @@ const SignUp = () => {
     let firebaseError;
     if (error || updatingError) {
         firebaseError = <p className='text-error text-center'><small>{error?.message}</small></p>
-         
+
     }
 
-   
+
 
     const onSubmit = async data => {
         if (data.password !== data.confPassword) {
@@ -50,11 +53,11 @@ const SignUp = () => {
         else {
             setConfirmPassError('')
         }
+        
         await createUserWithEmailAndPassword(data.email, data.password)
-        await updateProfile({ displayName: data.name, photoURL :data.photo });
+        await updateProfile({ displayName: data.name});
     };
 
-   
     return (
         <div>
             <div className=''>
@@ -101,26 +104,7 @@ const SignUp = () => {
                                 {errors.email?.type === 'required' && <span className="label-text-alt text-error">{errors.email.message}</span>}
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-error">{errors.email.message}</span>}
                             </label>
-                            <label className="label">
-                                <span className="label-text text-secondary">Your photo url </span>
-                            </label>
-                            <small className='text-gray-200'>Exm. https://i.ibb.co/t3kNLWw/men-four.png</small>
-                            <input
-                                className='input input-bordered input-primary w-full text-secondary'
-                                type="text"
-                                placeholder='Enter your name'
-                                {...register("photo", {
-                                    required: {
-                                        value: true,
-                                        message: "Photo url is required"
-                                    }
-                                })}
-                            />
-                            <label className="label">
-                                {errors.photo?.type === 'required' && <span className="label-text-alt text-error">{errors.photo.message}</span>}
-                            </label>
-
-                            <label className="label">
+                             <label className="label">
                                 <span className="label-text text-secondary">Password</span>
                             </label>
                             <input
