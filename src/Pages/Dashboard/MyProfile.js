@@ -37,7 +37,7 @@ const MyProfile = () => {
 
     const onSubmit = data => {
         const formData = new FormData();
-        formData.append('image', data.photo[0])
+        formData.append('image', data?.photo[0])
         const url = `https://api.imgbb.com/1/upload?key=${imageBBApiKey}`
         fetch(url, {
             method: 'POST',
@@ -83,7 +83,7 @@ const MyProfile = () => {
             <div className="card md:w-5/6 mx-auto my-10 shadow-xl">
                 <div className="card-body text-center">
                     <div className="avatar placeholder mx-auto ">
-                        <div className="bg-neutral-focus text-neutral-content rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 w-12">
+                        <div className="bg-neutral-focus text-neutral-content rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 w-32">
                             <img src={userData?.photo || user.photoURL? userData?.photo || user.photoURL : profile} alt="" />
                         </div>
                     </div>
@@ -181,7 +181,7 @@ const MyProfile = () => {
                                 }
                             })}
                         />
-                       {( userData?.photo || user?.photoURL) ? '' : <> <label className="label">
+                       <label className="label">
                             <span className="label-text text-secondary">Your photo </span>
                         </label>
                         <div className='input-main-div'>
@@ -199,8 +199,6 @@ const MyProfile = () => {
                         <label className="label">
                             {errors.photo?.type === 'required' && <span className="label-text-alt text-error">{errors.photo.message}</span>}
                         </label>
-                        </>
-                        }
                         <label className="label">
                             <span className="label-text text-secondary">LinkedIn</span>
                         </label>

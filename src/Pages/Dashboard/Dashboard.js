@@ -18,19 +18,26 @@ const Dashboard = () => {
             <div className="drawer-side">
                 <label for="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
-                    {!admin && <>
-                        <li><Link className='font-semibold' to='/dashboard/my-orders'>My Orders</Link></li>
-                        <li><Link className='font-semibold' to='/dashboard/add-reviews'>Add Reviews</Link></li>
-                        </>
-                        }
+                <li><Link className='font-semibold' to='/dashboard'>Profile</Link></li>
+
                     {
-                        admin && <>
+                        admin ? <>
                             <li><Link className='font-semibold' to='/dashboard/users'>Users</Link></li>
                             <li><Link className='font-semibold' to='/dashboard/manage-all-orders'>Manage All Orders</Link></li>
                             <li><Link className='font-semibold' to='/dashboard/add-product'>Add A Product</Link></li>
                             <li><Link className='font-semibold' to='/dashboard/manage-product'>Manage Products</Link></li>
                         </>
+                        :
+                        <>
+                        <li><Link className='font-semibold' to='/dashboard/my-orders'>My Orders</Link></li>
+                        <li><Link className='font-semibold' to='/dashboard/add-reviews'>Add Reviews</Link></li>
+                        </>
                     }
+                     {/* {!admin && <>
+                        <li><Link className='font-semibold' to='/dashboard/my-orders'>My Orders</Link></li>
+                        <li><Link className='font-semibold' to='/dashboard/add-reviews'>Add Reviews</Link></li>
+                        </>
+                        } */}
 
                 </ul>
 
