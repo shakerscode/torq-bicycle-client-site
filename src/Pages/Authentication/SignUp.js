@@ -9,9 +9,7 @@ import useUserToken from '../../hooks/useUserToken';
 import { toast } from 'react-toastify';
 import './Auth.css'
 
-const SignUp = () => {
-    const [imageLink, setImageLink] = useState('')
-    console.log(imageLink);
+const SignUp = () => { 
     const navigate = useNavigate();
     const [confirmPassError, setConfirmPassError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -22,16 +20,14 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
-    const [token] = useUserToken(user);
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
-
+    
+    const [token] = useUserToken(user);
     useEffect(() => {
         if (token) {
-            navigate('/')
             navigate(from, { replace: true });
             toast.success('Successfully sign up')
-
         }
     }, [token, navigate, from])
 

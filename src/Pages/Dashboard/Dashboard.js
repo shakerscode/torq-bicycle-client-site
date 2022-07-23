@@ -32,13 +32,7 @@ const Dashboard = () => {
                         <li><Link className='font-semibold' to='/dashboard/my-orders'>My Orders</Link></li>
                         <li><Link className='font-semibold' to='/dashboard/add-reviews'>Add Reviews</Link></li>
                         </>
-                    }
-                     {/* {!admin && <>
-                        <li><Link className='font-semibold' to='/dashboard/my-orders'>My Orders</Link></li>
-                        <li><Link className='font-semibold' to='/dashboard/add-reviews'>Add Reviews</Link></li>
-                        </>
-                        } */}
-
+                    } 
                 </ul>
 
             </div>

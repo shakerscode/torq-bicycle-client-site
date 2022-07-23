@@ -1,56 +1,34 @@
 import React from 'react';
 
 const Blog = () => {
+    const blogs = [
+        {tittle: 'What is React Js?', topics: 'react', post: 'React is a declarative, efficient, and flexible JavaScript library for building user interfaces or UI components. It lets you compose complex UIs from small and isolated pieces of code called “components”.', imageUrl: 'https://tinyurl.com/2p8wbmy3'},
+
+        {tittle: 'What is JavaScript?', topics: 'javascript', post: 'JavaScript, often abbreviated JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2022, 98% of websites use JavaScript on the client side for web page behavior, often incorporating third-party libraries.', imageUrl: 'https://tinyurl.com/yc38zb3u'},
+
+        {tittle: 'What is the difference between react angular and vue?', topics: 'discussion', post: 'React is a UI library, Angular is a fully-fledged front-end framework, while Vue. js is a progressive framework. They can be used almost interchangeably to build front-end applications, but they are not 100 percent the same, so it makes sense to compare them and understand their differences', imageUrl: 'https://tinyurl.com/yc6ecsk6'},
+
+        {tittle: 'How to start web development for beginners?', topics: 'web', post: "It doesn't matter if you do not have a computer science degree. It doesn't matter if you have not written a single line of code in your life. I will give you the exact roadmap that you can follow and become a Self-Taught Web Developer. If you are passionate about learning something, you can absolutely do it.", imageUrl: 'https://tinyurl.com/27uxfa63'},
+        {tittle: 'How to does react and angular work?', topics: 'discussion', post: "React is a library, but Angular is a full-fledged framework. The virtual DOM and one-way data binding are used by React. js, but the real DOM and two-way data binding are used by Angular. There's also a speed difference (React's is faster) and a difference in bundle size (React's is smaller) (React works a bit faster).", imageUrl: 'https://tinyurl.com/mpdwrdhe'},
+        {tittle: 'How to can we test our code?', topics: 'codding', post: 'Modern trends and webapps have dramatically changed the way web developers can build. Obviously you need some type of IDE to code new files and save them for deployment. But what about just testing your code snippets? There are more tools available now than ever before!', imageUrl: 'https://tinyurl.com/32fcn3pb'},
+    ]
     return (
         <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 w-5/6 mx-auto my-10'>
-            <div class="card  bg-base-100 shadow-xl">
+
+            {
+                blogs.map((blog, i) =>
+                    <div key={i} class="card  bg-base-100 shadow-xl">
+                        <img src={blog.imageUrl} className='w-full' alt="" />
                 <div class="card-body">
-                    <h2 class="card-title">How will you improve the performance of a React Application?</h2>
-                    <p>Here are some way to Optimizing performance in a React application: <br />
-                        1. Don't duplicate code. <br />
-                        2. Write custom hooks for that code that is duplicating. <br />
-                        3. Using lazy loading system in images. <br />
-                        4. Don't write codes that is unused. <br />
-                        5. Dont write unused props in a component. Make sure that components receive only props that is necessary. <br />
-                        6. Not drilling props. <br />
-                        7. Using context api. <br />
-                        8. Use component where code need to write twice.</p>
+                    <h2 class="card-title">{blog.tittle}</h2>
+                    <span className='text-primary font-semibold text-xs py-2 cursor-pointer'>Tag: {blog.topics}</span>
+                    <p>{blog.post}</p>
+                <a className='text-right pr-8 py-6 text-md font-semibold text-primary' target={'blank'} href={`https://www.google.com/search?q=${blog.tittle}`}>Explore More</a>
                 </div>
             </div>
-            <div class="card   bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title"> What are the different ways to manage a state in a React application?</h2>
-                    <p>There are four kinds of React State that need to manage in a react app. These are:  <br />
-                        1. Local state. <br />
-                        2. Global state. <br />
-                        3. Server state. <br />
-                        4. URL state.</p>
-                </div>
-            </div>
-            <div class="card   bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title">How does prototypical inheritance work?</h2>
-                    <p>Prototypal Inheritance is a kind of methode that used to add methods and properties in javascript objects. By this method an object can inherit the properties and methods of another object. When it a property is missing from object, JavaScript automatically takes it from the prototype. In programming, this is called “prototypal inheritance”. </p>
-                </div>
-            </div>
-            <div class="card   bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title">Why you do not set the state directly in React. For example, if you have const [products, setProducts] = useState([]). Why you do not set products = [...] instead, you use the setProducts</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                </div>
-            </div>
-            <div class="card   bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title">You have an array of products. Each product has a name, price, description, etc. How will you implement a search to find products by name?</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                </div>
-            </div>
-            <div class="card   bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title">What is a unit test? Why should write unit tests?</h2>
-                    <p>Unit testing is somthing that ensures all code meets quality standards before it's deployed. Its a process where developers check their code before deploying codes in live.  It ensures  that the code is perfectly running.Unit testing saves time and money, and helps developers write better code, more efficiently and more standard.</p>
-                </div>
-            </div>
+                 )
+            }
+            
         </div>
     );
 };
