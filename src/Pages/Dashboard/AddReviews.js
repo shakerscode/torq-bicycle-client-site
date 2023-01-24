@@ -12,7 +12,7 @@ const AddReviews = () => {
 
     const onSubmit = data => {
         data.image = user?.photoURL;
-            fetch('https://safe-waters-55642.herokuapp.com/reviews',{
+            fetch('https://torq-server.onrender.com/reviews',{
                 method: 'POST',
                 headers:{
                     'content-type': 'application/json'

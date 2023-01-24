@@ -15,7 +15,7 @@ const ManageOrders = () => {
     const [adminOrderDeleting, setOrderAdminDeleting] = useState(null)
     const email = user?.email;
     const { isLoading, data: userOrders, refetch } = useQuery('user-orders', () =>
-        fetch(`https://safe-waters-55642.herokuapp.com/user-orders?email=${email}`, {
+        fetch(`https://torq-server.onrender.com/user-orders?email=${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

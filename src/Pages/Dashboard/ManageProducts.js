@@ -8,7 +8,7 @@ const ManageProducts = () => {
     const [adminModal, setAdminModal] = useState(null);
     
     const { isLoading, data: parts, refetch } = useQuery('product', () =>
-fetch('https://safe-waters-55642.herokuapp.com/product').then(res =>
+fetch('https://torq-server.onrender.com/product').then(res =>
   res.json()
 )
 )

@@ -15,7 +15,7 @@ const Payment = () => {
 
 
     const { isLoading, data: payingOrder, refetch } = useQuery(['order-to-pay', id], () =>
-        fetch(`https://safe-waters-55642.herokuapp.com/order/${id}`, {
+        fetch(`https://torq-server.onrender.com/order/${id}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

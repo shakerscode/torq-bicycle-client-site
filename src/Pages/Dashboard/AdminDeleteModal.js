@@ -5,7 +5,7 @@ const AdminDeleteModal = ({adminModal, refetch, isLoading}) => {
     const id = adminModal;
     const deleteAdminProduct = () =>{
         if(id){
-            fetch(`https://safe-waters-55642.herokuapp.com/admin/${id}`,{
+            fetch(`https://torq-server.onrender.com/admin/${id}`,{
                     method: 'DELETE',
                     headers: {
                         'authorization': `Bearer ${localStorage.getItem('accessToken')}`

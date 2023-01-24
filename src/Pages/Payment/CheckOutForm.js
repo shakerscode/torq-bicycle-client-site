@@ -15,7 +15,7 @@ const CheckOutForm = ({totalPrice, payingOrder}) => {
 
 
     useEffect(()=>{
-        fetch('https://safe-waters-55642.herokuapp.com/create-payment-intent',{
+        fetch('https://torq-server.onrender.com/create-payment-intent',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json',
@@ -83,7 +83,7 @@ const CheckOutForm = ({totalPrice, payingOrder}) => {
                 transactionId: paymentIntent.id,
             }
             //updating in data
-            fetch(`https://safe-waters-55642.herokuapp.com/order/${_id}`,{
+            fetch(`https://torq-server.onrender.com/order/${_id}`,{
                 method: 'PATCH',
                 headers: {
                     'content-type' : 'application/json',

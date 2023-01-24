@@ -14,11 +14,10 @@ const Purchase = () => {
     const [q, setQ]= useState(0)
     const [user] = useAuthState(auth)
     const [error, setErrors] = useState('');
-    const [productQuantity, setProductQuantity] = useState(0)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const { isLoading, data: singleProduct } = useQuery(['productId', id], () =>
-        fetch(`https://safe-waters-55642.herokuapp.com/product/${id}`).then(res =>
+        fetch(`https://torq-server.onrender.com/product/${id}`).then(res =>
             res.json()
         )
     )
@@ -35,7 +34,7 @@ const Purchase = () => {
         data.quantity = q;
         const order = data;
 
-        fetch('https://safe-waters-55642.herokuapp.com/orders', {
+        fetch('https://torq-server.onrender.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

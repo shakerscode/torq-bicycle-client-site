@@ -19,17 +19,17 @@ const MyProfile = () => {
     const [updatingInfo, setUpdatingInfo] = useState(false)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth)
-    const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
+    const [updateProfile] = useUpdateProfile(auth);
     const userEmail = user?.email;
 
     const { isLoading, data: userData, refetch } = useQuery('users', () =>
-        fetch(`https://safe-waters-55642.herokuapp.com/user/${userEmail}`, {
+        fetch(`https://torq-server.onrender.com/user/${userEmail}`, {
             method: 'GET'
         }).then(res =>
             res.json()
         )
     )
-    if (isLoading) {
+    if (isLoading ) {
         return <LoadingSpinner></LoadingSpinner>
     }
     refetch()
@@ -49,7 +49,7 @@ const MyProfile = () => {
                     data.photo = result.data.url;
                     updateProfile({ displayName: data.name, photoURL: data.photo });
 
-                    fetch(`https://safe-waters-55642.herokuapp.com/user/${userEmail}`, {
+                    fetch(`https://torq-server.onrender.com/user/${userEmail}`, {
                         method: 'PATCH',
                         headers: {
                             'content-type': 'application/json'
@@ -59,7 +59,7 @@ const MyProfile = () => {
                         res.json()
                     ).then(data => {
                         if (data) {
-                            console.log(data);
+                            setUpdatingInfo(false)
                             toast.success('Successfully updated profile information')
                         }
                     })
@@ -177,7 +177,7 @@ const MyProfile = () => {
                             {...register("zip", {
                                 required: {
                                     value: true,
-                                    message: "Phone number is required"
+                                    message: "Zip code is required"
                                 }
                             })}
                         />

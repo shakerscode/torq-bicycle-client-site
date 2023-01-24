@@ -8,7 +8,7 @@ const OrderDelete = ({ deleteModal, refetch, isLoading }) => {
 
     useEffect(() => {
         if (yes) {
-            fetch(`https://safe-waters-55642.herokuapp.com/user/${id}`, {
+            fetch(`https://torq-server.onrender.com/user/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

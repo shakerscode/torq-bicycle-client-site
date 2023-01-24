@@ -7,7 +7,7 @@ const AddProduct = () => {
 
     const onSubmit = data => {
 
-        fetch('https://safe-waters-55642.herokuapp.com/product',{
+        fetch('https://torq-server.onrender.com/product',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

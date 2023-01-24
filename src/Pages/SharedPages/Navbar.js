@@ -13,8 +13,7 @@ const Navbar = () => {
         <li><Link to='/contact-us'>Contact</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/reviews'>Reviews</Link></li>
-        {/* <li><Link to='/my-portfolio'>Portfolio</Link></li> */}
-        {user && <li>
+         {user && <li>
             <Link to='/dashboard'>Dashboard </Link>
         </li>}
     </>
@@ -38,12 +37,7 @@ const logOutUser = () => {
                     </ul>
                 </div>
                 <Link className="btn btn-ghost normal-case text-xl md:text-3xl" to='/'>Torq Bicycle</Link>
-            </div>
-            {/* <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0 text-lg">
-                    {menuLinks}
-                </ul>
-            </div> */}
+            </div> 
             <div className="navbar-end ">
             <ul className="menu hidden lg:flex menu-horizontal p-0 text-lg">
                     {menuLinks}

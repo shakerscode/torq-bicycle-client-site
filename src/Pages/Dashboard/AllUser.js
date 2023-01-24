@@ -5,7 +5,7 @@ const AllUser = ({ user, index, refetch }) => {
     const { email } = user;
 
     const makeUserAdmin = () => {
-        fetch(`https://safe-waters-55642.herokuapp.com/user/admin/${email}`, {
+        fetch(`https://torq-server.onrender.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

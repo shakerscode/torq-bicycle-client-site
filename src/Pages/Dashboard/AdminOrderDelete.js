@@ -8,7 +8,7 @@ const AdminOrderDelete = ({ adminOrderDeleting, refetch, isLoading }) => {
 
     const deleteOrder = () =>{
         if(id){
-            fetch(`https://safe-waters-55642.herokuapp.com/admin/order/${id}`,{
+            fetch(`https://torq-server.onrender.com/admin/order/${id}`,{
                     method: 'DELETE',
                     headers: {
                         'authorization': `Bearer ${localStorage.getItem('accessToken')}`

@@ -5,7 +5,7 @@ import AllUser from './AllUser';
 
 const Users = () => {
     const { isLoading, data: users, refetch } = useQuery('allUsers', () =>
-        fetch('https://safe-waters-55642.herokuapp.com/users', {
+        fetch('https://torq-server.onrender.com/users', {
             method: 'GET',
             headers: {
                 'content-type' : 'application/json',

@@ -24,6 +24,7 @@ const SignUp = () => {
     let from = location.state?.from?.pathname || "/";
     
     const [token] = useUserToken(user);
+    
     useEffect(() => {
         if (token) {
             navigate(from, { replace: true });

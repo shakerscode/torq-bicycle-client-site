@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import imageOne from '../../images/carosel/image-1.png'
 import imageTwo from '../../images/carosel/image-2.png'
 import imageThree from '../../images/carosel/image-3.png'
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -68,7 +69,7 @@ const HomeSlider = () => {
                                 className='absolute bottom-6 left-0 md:bottom-16 md:left-14 bg-orange-200 p-2 md:p-10'>
                                 <h1 className='md:text-4xl text-md font-bold uppercase'>{sData?.tittle}</h1>
                                 <p className='text-black md:text-xl text-xs'>{sData.desc}</p>
-                               
+
                             </div>
                         </div>
                     </SwiperSlide>

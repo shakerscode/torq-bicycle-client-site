@@ -16,7 +16,7 @@ const MyOrders = () => {
     const email = user?.email;
 
     const { isLoading, data: orders, refetch } = useQuery('order', () =>
-        fetch(`https://safe-waters-55642.herokuapp.com/order?email=${email}`, {
+        fetch(`https://torq-server.onrender.com/order?email=${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

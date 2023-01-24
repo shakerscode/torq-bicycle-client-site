@@ -5,7 +5,7 @@ import LoadingSpinner from '../SharedPages/LoadingSpinner';
 
 const Reviews = () => {
     const { isLoading, data: reviews } = useQuery('reviews', () =>
-    fetch('https://safe-waters-55642.herokuapp.com/review').then(res =>
+    fetch('https://torq-server.onrender.com/review').then(res =>
       res.json()
     )
   )

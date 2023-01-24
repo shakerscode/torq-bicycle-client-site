@@ -7,7 +7,7 @@ import Review from './Review';
 
 const ProductReview = () => {
     const { isLoading, data: reviews } = useQuery('reviews', () =>
-    fetch('https://safe-waters-55642.herokuapp.com/review').then(res =>
+    fetch('https://torq-server.onrender.com/review').then(res =>
       res.json()
     )
   )

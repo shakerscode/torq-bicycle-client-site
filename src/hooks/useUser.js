@@ -6,7 +6,7 @@ const useUser = user => {
     useEffect(() => {
         const email = user?.email;
         if(email){
-            fetch(`https://safe-waters-55642.herokuapp.com/web-user/${email}`,{
+            fetch(`https://torq-server.onrender.com/web-user/${email}`,{
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

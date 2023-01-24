@@ -6,7 +6,7 @@ const ManageOrderInfo = ({ userOrder, index, setOrderAdminDeleting, refetch }) =
 
    
     const updatingStatus = () =>{
-        fetch(`https://safe-waters-55642.herokuapp.com/order/updating/${_id}`,{
+        fetch(`https://torq-server.onrender.com/order/updating/${_id}`,{
             method: 'PATCH',
             headers: {
                 'content-type' : 'application/json',
